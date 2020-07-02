@@ -71,7 +71,7 @@ def keys():
     global _last_keys, _keys
 
     now = time.monotonic()
-    if now - _last_keys < 0.01:
+    if now - _last_keys < 0.02:
         return _keys
     _last_keys = now
 
