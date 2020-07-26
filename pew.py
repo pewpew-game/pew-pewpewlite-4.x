@@ -76,8 +76,7 @@ def keys():
     _last_keys = now
 
     _temp[0] = 0x40
-    _i2c.writeto(0x70, _temp, end=1, stop=False)
-    _i2c.readfrom_into(0x70, _temp)
+    _i2c.writeto_then_readfrom(0x70, _temp, _temp, out_end=1)
     _keys = int.from_bytes(_temp, 'little') >> 5
     if _keys & 0b011110 == 0b011110:
         raise GameOver()
